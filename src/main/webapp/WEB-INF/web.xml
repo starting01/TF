@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" version="4.0">
+  <display-name>Archetype Created Web Application</display-name>
+
+  <servlet>
+    <servlet-name>servlet</servlet-name>
+    <servlet-class>test.MyServlet3</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>servlet</servlet-name>
+    <url-pattern>/servlet</url-pattern>
+  </servlet-mapping>
+
+  <!-- 继承GenericServlet的servlet-->
+  <servlet>
+    <servlet-name>genericServlet</servlet-name>
+    <servlet-class>test.MyServlet2</servlet-class>
+    <load-on-startup>0</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>genericServlet</servlet-name>
+    <url-pattern>/gs</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>myServlet</servlet-name>
+    <servlet-class>test.MyServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>myServlet</servlet-name>
+    <!-- <url-pattern>/myservlet</url-pattern>  精确匹配-->
+    <!-- <url-pattern>*.***</url-pattern> 后缀名匹配只要是以***后缀结尾的都可以访问该servlet-->
+    <!-- /* 匹配所有请求，但不会影响精确匹配,但会拦截非精确匹配-->
+    <url-pattern>/myServlet</url-pattern>
+  </servlet-mapping>
+
+  <filter>
+    <filter-name>xml</filter-name>
+    <filter-class>test.XmlFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>xml</filter-name>
+    <url-pattern>/gs</url-pattern>
+  </filter-mapping>
+
+</web-app>
