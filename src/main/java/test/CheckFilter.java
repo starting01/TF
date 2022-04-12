@@ -29,6 +29,7 @@ public class CheckFilter implements Filter {
         HttpSession session = request.getSession();
         Admin msg = (Admin) session.getAttribute("msg");
         System.out.println("好绝望啊");
+        System.out.println("好吧，删了重来");
         if(msg != null){
             session.setAttribute("msg",msg);
             filterChain.doFilter(servletRequest,servletResponse);
